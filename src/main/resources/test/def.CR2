@@ -1,0 +1,491 @@
+package com.demo.other.sxt.season1;
+
+import org.junit.Test;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.junit.Assert.*;
+
+public class BasicJavaTest {
+    @Test
+    public void tets001() {
+        final double PI = 3.14;
+        System.out.println(PI);
+        final List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        //list = new LinkedList<>();
+        System.out.println(new ArrayList<Integer>().hashCode());
+        System.out.println(new ArrayList<Integer>().hashCode());
+    }
+
+    @Test
+    public void test002() {
+        System.out.println(044);
+        float f1 = 423432424f;
+        float f2 = f1 + 1;
+        System.out.println(f1 == f2);
+
+        BigDecimal bd = BigDecimal.valueOf(1.0);
+        bd = bd.subtract(BigDecimal.valueOf(0.1));
+        bd = bd.subtract(BigDecimal.valueOf(0.1));
+        bd = bd.subtract(BigDecimal.valueOf(0.1));
+        bd = bd.subtract(BigDecimal.valueOf(0.1));
+        bd = bd.subtract(BigDecimal.valueOf(0.1));
+        System.out.println(bd);
+        System.out.println(1.0 - 0.1 - 0.1 - 0.1 - 0.1 - 0.1);
+        System.out.println('\u4e2d');
+
+        System.out.println('\'');
+        System.out.println('a' + 'b');
+        byte ii = 2;
+        byte jj = 4;
+        System.out.println(ii + jj);
+    }
+
+    @Test
+    public void test003() {
+        byte a = 1;
+        byte b = 2;
+        //byte c = a + b;
+
+        int d = 3;
+        int e = 5;
+        int f = d + e;
+
+        short g = 4;
+        short h = 7;
+        //short i = g + h;
+
+        //short k = a + g;
+
+        float f1 = 3.3F;
+        float f2 = 3.4F;
+        float f3 = f1 + f2;
+
+
+    }
+
+    @Test
+    public void test004() {
+        int a = 1;
+        int b = a++;
+        System.out.println(b + "\t" + a);
+
+        b = ++a;
+        System.out.println(b + "\t" + a);
+
+        System.out.println(b + "\n" + a);
+
+        char a1 = 'a';
+        System.out.println(a1 + 0);
+    }
+
+    @Test
+    public void test() {
+        try {
+            Thread.sleep(100L);
+            FileInputStream fileInputStream = new FileInputStream("");
+        } catch (InterruptedException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test005() {
+        System.out.println(3 << 2);
+        System.out.println(3 + 2 + "2");
+    }
+
+    @Test
+    public void test006() {
+        int x = 1;
+        int y = (x == 1) ? 2 : 3;
+        System.out.println(y);
+    }
+
+    @Test
+    public void test007() {
+        System.out.println(1 / 0);
+    }
+
+    @Test
+    public void test008() {
+        FileReader reader = null;
+        try {
+            System.exit(0);
+            reader = new FileReader("d:/a.txt");
+            char c = (char) reader.read();
+            char c2 = (char) reader.read();
+            System.out.println("" + c + c2);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void test009() throws IllegalAgeException {
+        Person person = new Person();
+        person.setAge(-9);
+    }
+
+    @Test
+    public void test010() {
+        //System.out.println(File.separatorChar);
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\IMG_1530.CR2";
+        File src = new File(path);
+        System.out.println(src.length());
+
+        src = new File("D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\", "resources\\IMG_1530.CR2");
+        System.out.println(src.length());
+
+
+        src = new File(new File("D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\"), "resources\\IMG_1530.CR2");
+        System.out.println(src.length());
+    }
+
+    @Test
+    public void test011() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\IMG_1530.CR2";
+        File src = new File(path);
+        System.out.println(src.getAbsolutePath());
+        System.out.println(src.getPath());
+
+        System.out.println("work dir = " + System.getProperty("user.dir"));
+
+        src = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\IMG_1530.CR2");
+        System.out.println(src.getPath());
+        System.out.println(src.exists());
+
+    }
+
+    @Test
+    public void test012() {
+        String path = "src\\main\\resources\\IMG_1530.CR2";
+        File src = new File(path);
+        System.out.println(src.getName());
+        System.out.println(src.getPath());
+        System.out.println(src.getAbsolutePath());
+        System.out.println(src.getParent());
+        System.out.println(src.getParentFile().getName());
+    }
+
+    @Test
+    public void test013() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\IMG_1530.CR2";
+        File src = new File(path);
+        System.out.println(src.exists());
+        System.out.println(src.isFile());
+        System.out.println(src.isDirectory());
+        System.out.println(src.length() / 1024. / 1024.);
+    }
+
+    @Test
+    public void test014() throws IOException {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\IMG_1531.CR2";
+        File src = new File(path);
+        //System.out.println(src.createNewFile());
+        System.out.println(src.delete());
+
+
+    }
+
+    @Test
+    public void test015() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\binv";
+        File src = new File(path);
+        System.out.println(src.mkdir());
+        System.out.println(src.mkdirs());
+        src.delete();
+    }
+
+    @Test
+    public void test016() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources";
+        File src = new File(path);
+        String[] subNames = src.list();
+        System.out.println(Arrays.toString(subNames));
+
+        File[] subFile = src.listFiles();
+        for (File file : subFile) {
+            System.out.println(file.getAbsolutePath());
+        }
+
+        System.out.println(src.listRoots()[0]);
+
+    }
+
+    @Test
+    public void test017() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet";
+        File src = new File(path);
+        printAllFile(src, 1);
+
+    }
+
+    private void printAllFile(File src, int deep) {
+        System.out.println(src.getAbsolutePath());
+        for (int i = 0; i <= deep; i++) {
+            System.out.print("-");
+        }
+
+        if (src.isDirectory()) {
+            File[] files = src.listFiles();
+            for (File file : files) {
+                printAllFile(file, deep++);
+            }
+        }
+    }
+
+
+    @Test
+    public void test018() throws UnsupportedEncodingException {
+        String msg = "性命生命使命a";
+        byte[] datas = msg.getBytes();
+        System.out.println(Arrays.toString(datas));
+        System.out.println(datas.length);
+
+        String decode = new String(datas, "UTF-8");
+        System.out.println(decode);
+
+        System.out.println("============");
+        datas = msg.getBytes("UTF-16LE");
+        System.out.println(Arrays.toString(datas));
+        System.out.println(datas.length);
+
+        datas = msg.getBytes("GBK");
+        System.out.println(Arrays.toString(datas));
+        System.out.println(datas.length);
+
+    }
+
+    @Test
+    public void test019() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\abc.txt";
+        File src = new File(path);
+
+        try {
+            InputStream is = new FileInputStream(src);
+
+            int data1 = is.read();
+            int data2 = is.read();
+            int data3 = is.read();
+            int data4 = is.read();
+            System.out.println((char) data1);
+            System.out.println((char) data2);
+            System.out.println((char) data3);
+            System.out.println(data4);
+            System.out.println(is.read());
+
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test020() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\abc.txt";
+        File src = new File(path);
+        InputStream is = null;
+
+        try {
+            is = new FileInputStream(src);
+
+            int temp = 0;
+            while ((temp = is.read()) != -1) {
+                System.out.println( temp);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @Test
+    public void test021() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\abc.txt";
+        File src = new File(path);
+        InputStream is = null;
+
+        try {
+            is = new FileInputStream(src);
+
+            int temp = 0;
+
+            while ((temp = is.read()) != -1) {
+                System.out.println((char) temp);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void test022() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\abc.txt";
+        File src = new File(path);
+
+        InputStream is = null;
+
+        try {
+            is = new FileInputStream(src);
+            byte[] fulsh = new byte[1024];
+            int len = -1;
+
+            while ((len = is.read(fulsh)) != -1) {
+                System.out.println(len);
+                System.out.println(new String(fulsh, 0, len));
+                System.out.println("--------");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void test023() {
+        String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\def.txt";
+        File dest = new File(path);
+
+        OutputStream os = null;
+
+        try {
+            os = new FileOutputStream(dest, true);
+            String msg = "IO is so easy\r\n";
+            int temp = 0;
+            byte[] datas = msg.getBytes("UTF-8");
+            os.write(datas, 0, datas.length);
+            os.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (os != null) {
+                    os.close();
+                }
+            } catch (IOException e ) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void copyFile(String srcPath, String destPath) {
+        File src = new File(srcPath);
+        File dest = new File(destPath);
+
+        InputStream is = null;
+        OutputStream os = null;
+
+        try {
+            is = new FileInputStream(src);
+            os = new FileOutputStream(destPath);
+
+            byte[] flush = new byte[1024];
+            int len = 0;
+
+            while ((len = is.read(flush)) != -1) {
+                os.write(flush, 0, len);
+                os.flush();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (os != null) {
+                    os.close();
+                }
+
+                if (is != null) {
+                    os.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void test024() {
+        String srcPath = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\test\\java\\com\\demo\\other\\sxt\\season1\\BasicJavaTest.java";
+        String destPath = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\def.CR2";
+
+        copyFile(srcPath, destPath);
+    }
+}
+
+
+class Person {
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) throws IllegalAgeException {
+        if (age < 0) {
+            throw new IllegalAgeException("age should be great than zero");
+        }
+        this.age = age;
+    }
+}
+
+class IllegalAgeException extends Exception {
+    public IllegalAgeException() {
+
+    }
+
+    public IllegalAgeException(String message) {
+        super(message);
+    }
+}
