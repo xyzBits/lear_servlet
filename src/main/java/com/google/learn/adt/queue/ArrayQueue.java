@@ -23,12 +23,24 @@ public class ArrayQueue<T> implements QueueInterface<T> {
 
     public ArrayQueue(int initialCapacity) {
         checkCapacity(initialCapacity);
+/**
+ @SuppressWarnings("unchecked") T[] tempQueue = (T[]) new Object[initialCapacity];
+ queue = tempQueue;
+ frontIndex = 0;
+ backIndex = queue.length;
+ initialized = true;
+ */
 
-        @SuppressWarnings("unchecked")
-        T[] tempQueue = (T[]) new Object[initialCapacity];
+        T[] tempQueue = (T[]) new Object[initialCapacity + 1];
         queue = tempQueue;
         frontIndex = 0;
-        backIndex = queue.length;
+        /**
+         * 生成一个比客户给定容量大1的数组，是对客户的保证
+         * 这样设置后，队列头在数组头部
+         * backIndex = initialCapacity 为什么呢，这样的话，backIndex刚好在数组尾部，
+         * 符合空数组的条件
+         */
+        backIndex = initialCapacity;
         initialized = true;
     }
 
@@ -38,6 +50,7 @@ public class ArrayQueue<T> implements QueueInterface<T> {
 
 
     private void ensureCapacity() {
+        // 这是队列满的条件判断
         if (frontIndex == ((backIndex + 2) % queue.length)) {
             T[] oldQueue = queue;
             int oldLength = oldQueue.length;
@@ -54,7 +67,7 @@ public class ArrayQueue<T> implements QueueInterface<T> {
             }
 
             frontIndex = 0;
-            backIndex = oldLength - 1;
+            backIndex = oldLength - 2;
         }
     }
 
@@ -94,8 +107,14 @@ public class ArrayQueue<T> implements QueueInterface<T> {
         return frontIndex == ((backIndex + 1) % queue.length);
     }
 
+    private boolean isFull() {
+        return frontIndex == ((backIndex + 2) % queue.length);
+    }
+
     @Override
     public void clear() {
-
+        while (!isEmpty()) {
+            dequeue();
+        }
     }
 }
