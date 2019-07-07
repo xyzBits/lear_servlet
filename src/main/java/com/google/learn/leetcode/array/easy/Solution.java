@@ -46,4 +46,59 @@ public class Solution {
         return result;
     }
 
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    /**
+     * 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
+     *
+     * 现有一个链表 -- head = [4,5,1,9]，它可以表示为:
+     *
+     *
+     *
+     * 输入: head = [4,5,1,9], node = 5
+     * 输出: [4,1,9]
+     * 解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -> 1 -> 9.
+     *
+     * 从给定的这个结点往下传递
+     * @param node
+     */
+    public static void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+
+    public static void main(String[] args) {
+        // head = [4,5,1,9]
+        ListNode node1 = new ListNode(4);
+        ListNode node2 = new ListNode(5);
+        ListNode node3 = new ListNode(1);
+        ListNode node4 = new ListNode(9);
+
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        printList(node1);
+        deleteNode(node3);
+        //node1.next = node3;
+        printList(node1);
+
+    }
+
+    private static void printList(ListNode node) {
+        ListNode currentNode = node;
+        while (currentNode != null) {
+            System.out.print(currentNode.val + " ");
+            currentNode = currentNode.next;
+        }
+        System.out.println();
+    }
+
 }
