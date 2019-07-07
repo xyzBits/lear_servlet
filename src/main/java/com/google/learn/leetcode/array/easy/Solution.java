@@ -90,9 +90,11 @@ public class Solution {
         node3.next = node4;
 
         printList(node1);
-        deleteNode(node3);
+        //deleteNode(node3);
         //node1.next = node3;
-        printList(node1);
+
+        printList(reverseList(node1));
+        System.out.println(reverseList(node1) == null);
 
     }
 
@@ -103,6 +105,37 @@ public class Solution {
             currentNode = currentNode.next;
         }
         System.out.println();
+    }
+
+
+    /**
+     * 206. 反转链表
+     反转一个单链表。
+
+     示例:
+
+     输入: 1->2->3->4->5->NULL
+     输出: 5->4->3->2->1->NULL
+     */
+    public static ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode newHead = head;
+
+
+        ListNode currentNode = newHead.next;
+        newHead.next = null;
+
+        while (currentNode != null) {
+            ListNode node  = new ListNode(currentNode.val);
+            node.next = newHead;
+            newHead = node;
+            currentNode = currentNode.next;
+
+        }
+        return newHead;
+
     }
 
 }
