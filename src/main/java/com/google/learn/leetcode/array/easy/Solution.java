@@ -70,6 +70,10 @@ public class Solution {
      * @param node
      */
     public static void deleteNode(ListNode node) {
+        /**
+         * 删除链表中的一个节点，老方法，需要这个节点的前节点，后节点，然后让前节点指向后节点
+         * 新方法，不需要后节点，把后节点的数据放在当前节点，让当前节点指向后节点的后节点
+         */
         node.val = node.next.val;
         node.next = node.next.next;
     }
