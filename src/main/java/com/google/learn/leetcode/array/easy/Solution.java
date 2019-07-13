@@ -1,6 +1,8 @@
 package com.google.learn.leetcode.array.easy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Solution {
 
@@ -57,16 +59,17 @@ public class Solution {
 
     /**
      * 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
-     *
+     * <p>
      * 现有一个链表 -- head = [4,5,1,9]，它可以表示为:
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * 输入: head = [4,5,1,9], node = 5
      * 输出: [4,1,9]
      * 解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -> 1 -> 9.
-     *
+     * <p>
      * 从给定的这个结点往下传递
+     *
      * @param node
      */
     public static void deleteNode(ListNode node) {
@@ -93,8 +96,10 @@ public class Solution {
         //deleteNode(node3);
         //node1.next = node3;
 
-        printList(reverseList(node1));
-        System.out.println(reverseList(node1) == null);
+        //printList(reverseList(node1));
+        //System.out.println(reverseList(node1) == null);
+        //System.out.println(middleNode(node1).val);
+        printList(removeNthFromEnd(node4, 1));
 
     }
 
@@ -110,12 +115,12 @@ public class Solution {
 
     /**
      * 206. 反转链表
-     反转一个单链表。
-
-     示例:
-
-     输入: 1->2->3->4->5->NULL
-     输出: 5->4->3->2->1->NULL
+     * 反转一个单链表。
+     * <p>
+     * 示例:
+     * <p>
+     * 输入: 1->2->3->4->5->NULL
+     * 输出: 5->4->3->2->1->NULL
      */
     public static ListNode reverseList(ListNode head) {
         if (head == null) {
@@ -128,7 +133,7 @@ public class Solution {
         newHead.next = null;
 
         while (currentNode != null) {
-            ListNode node  = new ListNode(currentNode.val);
+            ListNode node = new ListNode(currentNode.val);
             node.next = newHead;
             newHead = node;
             currentNode = currentNode.next;
@@ -138,4 +143,111 @@ public class Solution {
 
     }
 
+    public static ListNode middleNode(ListNode head) {
+        /*
+        if (head == null) {
+            return null;
+        }
+
+        ListNode currentNode = head;
+        int length = 0;
+        while (currentNode != null) {
+            length++;
+            currentNode = currentNode.next;
+        }
+
+        ListNode result = null;
+        int count = 0;
+        currentNode = head;
+        while (currentNode != null) {
+
+            if (count == length / 2) {
+                result = currentNode;
+            }
+            count++;
+            currentNode = currentNode.next;
+        }
+        return result;
+        */
+
+        /*
+        ListNode currentNode = head;
+        List<ListNode> list = new ArrayList<>();
+        while (currentNode != null) {
+            list.add(currentNode);
+            currentNode = currentNode.next;
+        }
+        ((ArrayList<ListNode>) list).trimToSize();
+        return list.get(list.size() / 2);
+        */
+
+        ListNode slow = head;
+        ListNode fast = head;
+        while (slow != null && fast != null) {
+
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        List<ListNode> list = new ArrayList<>();
+        ListNode currentNode = head;
+        while (currentNode != null) {
+            list.add(currentNode);
+            currentNode = currentNode.next;
+        }
+
+        ((ArrayList<ListNode>) list).trimToSize();
+        ListNode nthFromEnd = list.get(list.size() - n);
+
+
+        if (nthFromEnd.next == null /*&& list.size() > 1*/) {
+            nthFromEnd = null;
+            //list.get(list.size() - 2).next = null;
+        } else {
+            nthFromEnd.val = nthFromEnd.next.val;
+            nthFromEnd.next = nthFromEnd.next.next;
+        }
+        return list.get(0);
+
+    }
+
+    public ListNode removeElements(ListNode head, int val) {
+        if (head == null) {
+            return null;
+        }
+        if (head.val != val && head.next == null) {
+            return head;
+        }
+        ListNode curr = head.next;
+        ListNode front = head;
+        while (curr != null) {
+            if (curr.next != null) {
+                if (curr.val == val) {
+                    curr.val = curr.next.val;
+                    curr.next = curr.next.next;
+                } else {
+                    front = front.next;
+                    curr = curr.next;
+                }
+            } else {
+                if (curr.val == val) {
+                    front.next = null;
+                }
+                curr = null;
+            }
+        }
+
+        if (head.val == val) {
+            if (head.next != null) {
+                head.val = head.next.val;
+                head.next = head.next.next;
+            } else {
+                head = null;
+            }
+        }
+        return head;
+    }
 }

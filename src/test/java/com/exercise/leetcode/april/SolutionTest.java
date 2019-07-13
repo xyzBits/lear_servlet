@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 import static org.junit.Assert.*;
 
@@ -35,11 +36,35 @@ public class SolutionTest {
 
     @Test
     public void testSortedSquares() {
-        int[] A = {-4,-1,0,3,10};
+        int[] A = {-4, -1, 0, 3, 10};
         System.out.println(Arrays.toString(com.google.learn.leetcode.array.easy.Solution.sortedSquares(A)));
-        int[] B = {-7,-3,2,3,11};
+        int[] B = {-7, -3, 2, 3, 11};
         System.out.println(Arrays.toString(com.google.learn.leetcode.array.easy.Solution.sortedSquares(B)));
-
+        Stack<Integer> stack = new Stack<>();
 
     }
+
+    @Test
+    public void tet009() throws Exception {
+        int[] arr = {1, 2, 3, 4};
+        System.out.println(arr.getClass());
+        Object[] objArr = new Object[3];
+        System.out.println(objArr.getClass());
+        objArr.getClass().newInstance();
+    }
+
+    @Test
+    public void test010() {
+        int[][] arr = new int[10][];
+
+    }
+
+
+}
+
+class Example {
+    int num1 = num2 + 1;
+    static int num2;
+
+
 }
