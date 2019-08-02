@@ -3,7 +3,17 @@ package com.exercise.leetcode.april;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.Stack;
 
 import static org.junit.Assert.*;
@@ -56,7 +66,89 @@ public class SolutionTest {
     @Test
     public void test010() {
         int[][] arr = new int[10][];
+        System.out.println(arr.getClass().getPackage());
+        List<Integer> list = new ArrayList<>();
+        System.out.println(list.getClass().getPackage());
+        System.out.println(list.getClass().getName());
+        System.out.println(list.getClass().getSuperclass());
+        System.out.println(Arrays.toString(list.getClass().getInterfaces()));
+        System.out.println(List.class);
+        System.out.println("==============");
+        System.out.println(Arrays.toString(list.getClass().getMethods()));
+        System.out.println(Arrays.toString(list.getClass().getDeclaredMethods()));
+        List<Method> methods = Arrays.asList(list.getClass().getMethods());
+        List<Method> declaredMethods = Arrays.asList(list.getClass().getDeclaredMethods());
+        //methods.removeAll(declaredMethods);
+        System.out.println(methods);
 
+
+    }
+
+    @Test
+    public void test011() throws Exception {
+        List<Integer> list = new ArrayList<>();
+        Class clazz = list.getClass();
+        Class[] classes = clazz.getDeclaredClasses();
+        System.out.println(Arrays.toString(classes));
+        Field[] fields = clazz.getFields();
+        System.out.println("fields = " + Arrays.toString(fields));
+
+        Field[] decFields = clazz.getDeclaredFields();
+        System.out.println("decFields = " + Arrays.toString(decFields).replace("java.util.ArrayList", ""));
+
+        Constructor[] publicCons = clazz.getConstructors();
+        System.out.println(Arrays.toString(publicCons));
+        Constructor[] decCons = clazz.getDeclaredConstructors();
+        System.out.println(Arrays.toString(decCons));
+        System.out.println(1400 * 4);
+
+    }
+
+    @Test
+    public void test012() {
+        Class clazz = ArrayList.class;
+        clazz = LinkedList.class;
+
+        Class<?> intClass = Integer.class;
+        intClass = Number.class;
+        System.out.println(void.class);
+        System.out.println(int.class);
+        System.out.println(float.class + " " + char.class);
+
+    }
+
+    @Test
+    public void test013() throws Exception {
+        Class clazz = ArrayList.class;
+        Method[] methods = clazz.getMethods();
+        System.out.println(Arrays.toString(methods));
+        Object object = clazz.newInstance();
+        ArrayList<Integer> list = (ArrayList) object;
+        list.add(1);
+        System.out.println(list.get(0));
+
+    }
+
+    @Test
+    public void test014() {
+        String str = "hello world";
+        int index = str.indexOf("z");
+        System.out.println(index);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int num = Integer.parseInt(str);
+        System.out.println(num);
+    }
+
+    @Test
+    public void test015() {
+        Throwable ex = new Throwable("Null pointer", new NullPointerException());
+        System.out.println(ex.getMessage());
+        System.out.println(ex.getCause());
+        System.out.println();
     }
 
 
