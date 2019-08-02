@@ -1,4 +1,4 @@
-package com.google.learn.thread.basic;
+package com.google.learn.javabasic.thread;
 
 public class MemoryModel {
     private static boolean iniFlag = false;

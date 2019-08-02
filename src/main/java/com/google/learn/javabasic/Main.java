@@ -1,4 +1,4 @@
-package com.google.learn.jvm.memory;
+package com.google.learn.javabasic;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.google.learn.thread.basic.chapter3;
+package com.google.learn.javabasic.thread.chapter3;
 
 public class CreateThread3 {
     private int i = 0;

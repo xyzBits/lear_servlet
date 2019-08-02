@@ -1,11 +1,8 @@
-package com.google.learn.thread.basic;
+package com.google.learn.thread;
 
 import org.junit.Test;
 
-import javax.swing.TransferHandler;
-
 import static java.lang.Thread.*;
-import static org.junit.Assert.*;
 
 public class MemoryModelTest {
     private static boolean iniFlag = false;

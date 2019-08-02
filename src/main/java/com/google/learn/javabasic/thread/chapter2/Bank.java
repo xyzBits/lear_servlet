@@ -1,4 +1,4 @@
-package com.google.learn.thread.basic.chapter2;
+package com.google.learn.javabasic.thread.chapter2;
 
 public class Bank {
     public static void main(String[] args) {

@@ -1,10 +1,10 @@
 package com.google.learn.proxy;
 
+import com.google.learn.javabasic.proxy.Developer;
+import com.google.learn.javabasic.proxy.JavaDeveloper;
 import org.junit.Test;
 
 import java.lang.reflect.Proxy;
-
-import static org.junit.Assert.*;
 
 public class JavaDeveloperTest {
     @Test

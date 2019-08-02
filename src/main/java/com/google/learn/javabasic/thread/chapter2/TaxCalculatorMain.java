@@ -1,6 +1,4 @@
-package com.google.learn.thread.basic.chapter2;
-
-import java.text.SimpleDateFormat;
+package com.google.learn.javabasic.thread.chapter2;
 
 public class TaxCalculatorMain {
     public static void main(String[] args) {

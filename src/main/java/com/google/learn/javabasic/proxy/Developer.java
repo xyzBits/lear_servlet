@@ -1,4 +1,4 @@
-package com.google.learn.proxy;
+package com.google.learn.javabasic.proxy;
 
 public interface Developer {
     void code();

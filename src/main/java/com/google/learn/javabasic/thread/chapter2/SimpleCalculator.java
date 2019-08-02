@@ -1,4 +1,4 @@
-package com.google.learn.thread.basic.chapter2;
+package com.google.learn.javabasic.thread.chapter2;
 
 public class SimpleCalculator implements CalculatorStragety {
     private static final double SALARY_RATE = 0.1;

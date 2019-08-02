@@ -1,4 +1,4 @@
-package com.google.learn.thread.basic.chapter2;
+package com.google.learn.javabasic.thread.chapter2;
 
 public class TicketWindowRunnable implements Runnable {
     private int index = 0;

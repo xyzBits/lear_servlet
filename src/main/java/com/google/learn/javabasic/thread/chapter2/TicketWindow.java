@@ -1,4 +1,4 @@
-package com.google.learn.thread.basic.chapter2;
+package com.google.learn.javabasic.thread.chapter2;
 
 public class TicketWindow extends Thread {
     private final static int MAX = 500;
