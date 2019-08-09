@@ -2,6 +2,8 @@ package com.google.learn.thread;
 
 import org.junit.Test;
 
+import java.lang.reflect.Field;
+
 import static java.lang.Thread.*;
 
 public class MemoryModelTest {
@@ -124,5 +126,34 @@ public class MemoryModelTest {
                 writeDataToFile();
             }
         }).start();
+    }
+
+    @Test
+    public void test006() {
+        int i = 0;
+        boolean result  = (1 < 2) || (i++ > 0);
+        System.out.println(result);
+        System.out.println(i);
+    }
+
+    @Test
+    public void test007() throws Exception {
+        String s = "hello world";
+        System.out.println(" s == " + s);
+
+        Field valueField = s.getClass().getDeclaredField("value");
+        valueField.setAccessible(true);
+
+        byte[] value = (byte[]) valueField.get(s);
+        value[3] = 65;
+        System.out.println(" s = " + s);
+
+    }
+
+    @Test
+    public void test008() {
+        String s1 = "hello";
+        String s2 = "hello".intern();
+        System.out.println(s1 == s2);
     }
 }
