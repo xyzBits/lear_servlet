@@ -1,0 +1,10 @@
+GET /index.html?uname=dongfang&pwd=12334 HTTP/1.1
+Host: localhost:8888
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://localhost:63342/lear_servlet/test/httpserver/get.html?_ijt=jkff3ip6q5ro7k2fkopi992mku
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7
+Cookie: _ga=GA1.1.1172827387.1526876019; Idea-7ff554d4=9d9c0421-6c6c-4b5a-ae0a-2fc6092cc196

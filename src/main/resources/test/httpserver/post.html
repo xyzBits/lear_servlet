@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个表单</title>
+</head>
+<body>
+    <pre>
+        method: 请求方式 get post
+            get:数据量小，安全性不高，默认方式
+            post: 数据量大，安全性相对较高
+        action: 请求服务器路径
+        id: 编号 前端区分唯一性，js中使用
+        name: 名称 后端区分唯一性
+        只要提交数据给后台，必须 存在name
+
+    </pre>
+
+    <form method="post" action="http://localhost:8888/index.html">
+        用户名：<input type="text", name="uname", id="uname"/>
+        密码： <input type="password", name="pwd", id="pwd"/>
+        兴趣：<input type="checkbox" name="fav" value="0"/> 篮球
+        <input type="checkbox" name="fav" value="0"/> 足球
+        <input type="checkbox" name="fav" value="0"/> 乒乓球
+        <input type="submit" value="登录" />
+    </form>
+
+</body>
+</html>
