@@ -1,4 +1,4 @@
-package com.google.learn.javabasic.thread.sxtdemo.reflect;
+package com.google.learn.javabasic.thread.sxtdemo.reflect.demo;
 
 public class User {
     private int id;

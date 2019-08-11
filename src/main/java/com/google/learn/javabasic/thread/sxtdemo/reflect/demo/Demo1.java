@@ -1,4 +1,4 @@
-package com.google.learn.javabasic.thread.sxtdemo.reflect;
+package com.google.learn.javabasic.thread.sxtdemo.reflect.demo;
 
 /**
  * 测试各种类型
@@ -7,7 +7,7 @@ package com.google.learn.javabasic.thread.sxtdemo.reflect;
 @SuppressWarnings(value = {"all"})
 public class Demo1 {
     public static void main(String[] args) {
-        String classPath = "com.google.learn.javabasic.thread.sxtdemo.reflect.User";
+        String classPath = "com.google.learn.javabasic.thread.sxtdemo.reflect.demo.User";
 
         try {
             // 对象封装一些数据 或者表示 一些数据
@@ -42,6 +42,11 @@ public class Demo1 {
 
             double[] arr04 = new double[3];
             System.out.println(arr04.getClass().hashCode());
+
+            System.out.println("==============");
+
+            Class intCls = int.class;
+            System.out.println(intCls.getSuperclass());
 
 
         } catch (ClassNotFoundException e) {
