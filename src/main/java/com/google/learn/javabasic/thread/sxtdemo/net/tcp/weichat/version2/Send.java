@@ -1,6 +1,5 @@
 package com.google.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2;
 
-import com.mysql.jdbc.BufferRow;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
