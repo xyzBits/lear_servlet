@@ -201,4 +201,32 @@
         <servlet-name>ServletDemo6</servlet-name>
         <url-pattern>/servlet/ServletDemo6</url-pattern>
     </servlet-mapping>
+
+
+    <!--***************************-->
+    <servlet>
+        <servlet-name>myservlet</servlet-name>
+        <servlet-class>com.demo.servlet.day1.ServletDemo01</servlet-class>
+        <!--<load-on-startup>1</load-on-startup>-->
+
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>dongfang</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>123456</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>charset</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myservlet</servlet-name>
+        <url-pattern>/servlet/myservlet</url-pattern>
+    </servlet-mapping>
 </web-app>

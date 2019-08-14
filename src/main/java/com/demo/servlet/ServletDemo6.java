@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 public class ServletDemo6 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = this.getServletContext().getRealPath("/download/IMG_1659.JPG");
+ /*       String path = this.getServletContext().getRealPath("/download/IMG_1659.JPG");
         System.out.println(path);
         FileInputStream fileInputStream = new FileInputStream(path);
         String fileName = "李慧.JPG";
@@ -28,6 +28,9 @@ public class ServletDemo6 extends HttpServlet {
         }
 
         servletOutputStream.close();
-        fileInputStream.close();
+        fileInputStream.close();*/
+
+
+        resp.getWriter().println(this.getServletContext().getAttribute("sharedData"));
     }
 }
