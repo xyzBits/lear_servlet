@@ -1,6 +1,7 @@
 package com.learn.javabasic.jdbc.orm;
 
-import com.google.learn.javabasic.jdbc.basic.JDBCUtil;
+
+import com.learn.javabasic.jdbc.basic.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

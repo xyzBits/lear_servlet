@@ -1,7 +1,7 @@
 package com.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version3;
 
 
-import com.google.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
+import com.learn.javabasic.jdbc.basic.CloseUtil;
 
 import java.io.DataInputStream;
 import java.io.IOException;

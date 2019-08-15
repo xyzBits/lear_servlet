@@ -1,6 +1,6 @@
 package com.learn.spring.aop.demo;
 
-import com.google.learn.spring.aop.beans.ICalculator;
+import com.learn.spring.aop.beans.ICalculator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 

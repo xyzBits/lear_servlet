@@ -1,8 +1,8 @@
 package com.learn.javabasic.thread.sxtdemo.net.httpserver.demo1;
 
-import com.google.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
 
-import javax.annotation.Resource;
+import com.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;

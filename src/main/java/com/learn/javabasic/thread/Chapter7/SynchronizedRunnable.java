@@ -1,6 +1,5 @@
 package com.learn.javabasic.thread.Chapter7;
 
-import com.google.learn.javabasic.thread.chapter6.ThreadService;
 
 public class SynchronizedRunnable implements Runnable {
     private int index = 0;

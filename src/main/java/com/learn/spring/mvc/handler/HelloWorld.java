@@ -1,7 +1,6 @@
 package com.learn.spring.mvc.handler;
 
-import com.google.learn.spring.mvc.bean.Car;
-import com.google.learn.spring.mvc.bean.Person;
+
 import com.learn.spring.mvc.bean.Car;
 import com.learn.spring.mvc.bean.Person;
 import org.slf4j.Logger;

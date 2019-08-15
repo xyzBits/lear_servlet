@@ -1,6 +1,5 @@
 package com.learn.javabasic.thread.sxtdemo.dynamiccompile;
 
-import com.google.learn.javabasic.thread.sxtdemo.Programmer;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;

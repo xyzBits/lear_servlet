@@ -1,6 +1,5 @@
 package com.learn.javabasic.thread.sxtdemo.net.httpserver.demo3;
 
-import com.google.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
 
 import java.util.Map;
 

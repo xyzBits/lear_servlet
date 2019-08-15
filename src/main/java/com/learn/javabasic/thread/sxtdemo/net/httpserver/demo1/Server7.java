@@ -1,12 +1,10 @@
 package com.learn.javabasic.thread.sxtdemo.net.httpserver.demo1;
 
 
-
-import com.google.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
+import com.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * 请求并响应

@@ -1,6 +1,5 @@
 package com.learn.javabasic.thread.Chapter7;
 
-import com.google.learn.javabasic.thread.chapter6.ThreadService;
 
 public class SynchronizedTest {
     private static final Object LOCK = new Object();

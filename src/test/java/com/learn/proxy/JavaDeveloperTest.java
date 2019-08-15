@@ -1,7 +1,8 @@
 package com.learn.proxy;
 
-import com.google.learn.javabasic.proxy.Developer;
-import com.google.learn.javabasic.proxy.JavaDeveloper;
+
+import com.learn.javabasic.proxy.Developer;
+import com.learn.javabasic.proxy.JavaDeveloper;
 import org.junit.Test;
 
 import java.lang.reflect.Proxy;

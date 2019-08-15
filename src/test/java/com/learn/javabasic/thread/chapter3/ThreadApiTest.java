@@ -1,16 +1,12 @@
 package com.learn.javabasic.thread.chapter3;
 
-import com.google.learn.javabasic.thread.chapter1.RunnableTicketWindow;
 
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.*;
 
 public class ThreadApiTest {
     @Test

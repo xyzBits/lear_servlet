@@ -1,10 +1,7 @@
 package com.learn.javabasic.net.inetaddress;
 
-import com.google.learn.javabasic.thread.chapter4.RunnableWindow;
 import org.junit.Test;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -26,7 +23,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
@@ -34,9 +30,6 @@ import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
-import static org.junit.Assert.*;
 
 public class OReillyByNameTest {
     @Test

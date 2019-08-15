@@ -1,6 +1,6 @@
 package com.learn.spring.aop.beans.impl;
 
-import com.google.learn.spring.aop.beans.ICalculator;
+import com.learn.spring.aop.beans.ICalculator;
 import org.springframework.stereotype.Component;
 
 @Component

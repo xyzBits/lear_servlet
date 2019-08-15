@@ -1,7 +1,7 @@
 package com.learn.javabasic.thread.sxtdemo.classloader;
 
 
-import com.google.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
+import com.learn.javabasic.thread.sxtdemo.net.tcp.weichat.version2.CloseUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
