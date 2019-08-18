@@ -2,10 +2,19 @@ package com.java8.chapter16;
 
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.TreeSet;
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -160,4 +169,212 @@ public class LambdaDemoTest {
         Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
     }
 
+    private void happyTime(double money, Consumer<Double> con) {
+        con.accept(money);
+    }
+
+    @Test
+    public void test009() {
+        happyTime(300, new Consumer<Double>() {
+            @Override
+            public void accept(Double aDouble) {
+
+            }
+        });
+
+        happyTime(400, (aDouble) -> {
+            System.out.println("consumer " + aDouble);
+        });
+    }
+
+    @Test
+    public void test010() {
+        List<String> list = Arrays.asList("北京", "南京", "天津", "东京", "西京", "普京");
+        List<String> filterStr = filterString(list, s -> s.contains("京"));
+        System.out.println(filterStr);
+    }
+
+    private List<String> filterString(List<String> list, Predicate<String> pre) {
+        List<String> filterList = new ArrayList<>();
+        for (String s : list) {
+            if (pre.test(s)) {
+                filterList.add(s);
+            }
+        }
+        return filterList;
+    }
+
+    @Test
+    public void test011() {
+        Consumer<String> con1 = str -> System.out.println(str);
+        con1.accept("beijing");
+        System.out.println("=================");
+
+        Consumer<String> con2 = System.out::println;
+        con2.accept("shenzhen");
+    }
+
+    @Test
+    public void test012() {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Hello world");
+            }
+        };
+        runnable.run();
+
+
+        Runnable runnable1 = () -> {
+            System.out.println("hello lambda");
+        };
+        runnable1.run();
+
+        Runnable runnable2 = () -> System.out.println("hello simple lambda");
+    }
+
+    @Test
+    public void test013() {
+        TreeSet<String> ts = new TreeSet<>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return Integer.compare(o1.length(), o2.length());
+            }
+        });
+
+        TreeSet<String> treeSet = new TreeSet<>((o1, o2) -> {
+            return Integer.compare(o1.length(), o2.length());
+        });
+
+        TreeSet<String> treeSet1 = new TreeSet<>((o1, o2) -> Integer.compare(o1.length(), o2.length()));
+        //TreeSet<String> treeSet2 = new TreeSet<>(Comparator::compareI)
+
+        Runnable runnable = () -> {
+            System.out.println("hello world");
+        };
+
+        Consumer<String> consumer = (String str) -> {
+            System.out.println(str);
+        };
+        Consumer<String> consumer1 = (str) -> {
+            System.out.println(str);
+        };
+        Consumer<String> consumer2 = str -> System.out.println(str);
+
+        Comparator<Integer> comparator = (x, y) -> {
+            System.out.println(x);
+            return Integer.compare(x, y);
+        };
+
+        Comparator<Integer> comparator1 = (x, y) -> Integer.compare(x, y);
+
+        String newStr = toUpperString((str) -> str.toUpperCase(), "abc");
+        String newStr1 = toUpperString(String::toUpperCase, "abc");
+
+    }
+
+    private String toUpperString(MyFun<String> mf, String str) {
+        return mf.getValue(str);
+    }
+
+    @Test
+    public void test014() {
+        Consumer<String> consumer = x -> System.out.println(x);
+        consumer = System.out::println;  //传递给lambda体的操作，已经在实现方法了
+        consumer.accept("hello");
+
+        Comparator<Integer> comparator = (x, y) -> Integer.compare(x, y);
+        comparator = Integer::compare;
+        comparator.compare(1, 2);
+
+        BiPredicate<String, String> biPredicate = (x, y) -> x.equals(y);
+        biPredicate = String::equals;
+        biPredicate.test("hello", "wo ");
+
+        Function<Integer, MyClass> fun = n -> new MyClass(n);
+        fun = MyClass::new;
+        Function<Integer, Integer[]> function = (n) -> new Integer[n];
+        function = Integer[]::new;
+
+        Consumer consumer1 = str -> System.out.println(str);
+        consumer1.accept("hello");
+
+        consumer1 = System.out::println;
+        consumer1.accept("dfa");
+
+        Employee emp = new Employee(1001,"Tom",23,5600);
+        Supplier<String> supplier = () -> emp.getName();
+        System.out.println(supplier.get());
+
+        supplier = emp::getName;
+        supplier.get();
+
+        Comparator<Integer> comparator1 = (o1, o2) -> Integer.compare(o1, o2);
+        comparator1.compare(1, 2);
+        comparator1 = Integer::compare;
+        comparator1.compare(4, 5);
+
+
+
+
+    }
+
+    private void test() {
+        Function<Double, Long> function = new Function<Double, Long>() {
+            @Override
+            public Long apply(Double aDouble) {
+                return Math.round(aDouble);
+            }
+        };
+
+        function = (aDouble) -> Math.round(aDouble);
+
+        function = Math::round;
+        function.apply(3.);
+
+        Comparator<String> comparator = (s1, s2) -> s1.compareTo(s2);
+        comparator = String::compareTo;
+        comparator.compare("hello", "haha");
+
+        BiPredicate<String, String> predicate = (s1, s2) -> s1.equals(s2);
+        predicate = String::equals;
+
+    }
+
+    @Test
+    public void test015() throws IOException {
+        Girl girl = new Girl();
+        Optional<Girl> optionalGirl = Optional.of(girl);
+        File file = new File("hello.txt");
+        System.out.println(file.getAbsolutePath());
+        file.createNewFile();
+    }
+
+    public static void main(String[] args) throws IOException {
+        File file = new File("hello.txt");
+        System.out.println(file.getAbsolutePath());
+        file.createNewFile();
+        file.delete();
+    }
+}
+
+class MyClass {
+    private Integer n;
+
+    public MyClass(Integer n) {
+        this.n = n;
+    }
+}
+
+@FunctionalInterface
+interface MyNumber {
+    double getValue();
+}
+
+@FunctionalInterface
+interface MyFun<T> {
+    T getValue(T t);
+
+    default void print() {
+    }
 }

@@ -26,7 +26,7 @@ public class SparseArray {
         }
     }
 
-    private static void write(File file, int[][] arr) {
+    private static void writeArr(File file, int[][] arr) {
         try (Writer out = new FileWriter(file)) {
 
             for (int[] row : arr) {
@@ -51,7 +51,7 @@ public class SparseArray {
         chessArr[2][3] = 2;
 
         String path = "D:\\ubuntu\\learn\\JavaWeb\\MavenProject\\maven03\\lear_servlet\\src\\main\\resources\\test\\dddd.txt";
-        write(new File(path), chessArr);
+        writeArr(new File(path), chessArr);
 
         int[][] arr = new int[11][11];
         readArr(new File(path), arr);
