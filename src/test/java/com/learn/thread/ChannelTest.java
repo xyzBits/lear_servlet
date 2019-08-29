@@ -1,6 +1,14 @@
 package com.learn.thread;
 
 import org.junit.Test;
+import org.springframework.beans.MutablePropertyValues;
+import org.springframework.beans.PropertyValue;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.ConstructorArgumentValues;
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.support.RootBeanDefinition;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -97,4 +105,60 @@ public class ChannelTest {
         fos.close();
         fis.close();
     }
+
+
+    public  BeanFactory bindViaCode(BeanDefinitionRegistry registry) {
+        AbstractBeanDefinition newsProvider = new RootBeanDefinition(FXNewsProvider.class);
+        AbstractBeanDefinition newsListener = new RootBeanDefinition(DowJonesNewsListener.class);
+        AbstractBeanDefinition newsPersister = new RootBeanDefinition(DowJonesNewsPersister.class);
+        // 将bean定义注册到容器中
+        registry.registerBeanDefinition("djNewsProvider", newsProvider);
+        registry.registerBeanDefinition("djListener", newsListener);
+        registry.registerBeanDefinition("djPersister", newsPersister);
+// 指定依赖关系
+        // 1. 可以通过构造方法注入方式
+        ConstructorArgumentValues argValues = new ConstructorArgumentValues();
+        argValues.addIndexedArgumentValue(0, newsListener);
+        argValues.addIndexedArgumentValue(1, newsPersister);
+        newsProvider.setConstructorArgumentValues(argValues);
+        // 2. 或者通过setter方法注入方式
+        MutablePropertyValues propertyValues = new MutablePropertyValues();
+        propertyValues.addPropertyValue(new PropertyValue("newsListener", newsListener));
+        propertyValues.addPropertyValue(new PropertyValue("newPersistener", newsPersister));
+        newsProvider.setPropertyValues(propertyValues);
+        // 绑定完成
+        return (BeanFactory) registry;
+    }
+
+    @Test
+    public void test008() {
+        DefaultListableBeanFactory beanRegistry = new DefaultListableBeanFactory();
+        BeanFactory container = (BeanFactory) bindViaCode(beanRegistry);
+        FXNewsProvider newsProvider =
+                (FXNewsProvider) container.getBean("djNewsProvider");
+        newsProvider.getAndPersistNews();
+    }
+}
+
+
+class FXNewsProvider {
+
+    public void getAndPersistNews() {
+    }
+}
+
+interface IFXNewsListener {
+
+}
+
+class DowJonesNewsListener implements IFXNewsListener {
+
+}
+
+interface IFXNewsPersister {
+
+}
+
+class DowJonesNewsPersister implements IFXNewsPersister {
+
 }

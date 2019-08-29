@@ -2,6 +2,7 @@ package com.learn.spring.aop.proxy;
 
 
 import com.learn.spring.aop.beans.ICalculator;
+import com.learn.spring.aop.beans.impl.CalculatorImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -65,5 +66,10 @@ public class CalculatorLogProxy {
         proxy = (ICalculator) Proxy.newProxyInstance(loader, interfaces, handler);
         return proxy;
 
+    }
+
+    public static void main(String[] args) {
+        ICalculator target = new CalculatorImpl();
+        ICalculator proxy = new  CalculatorLogProxy(target).getLogProxy();
     }
 }
