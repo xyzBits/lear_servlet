@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--    <bean id="book01" class="com.learn.spring.ioc.bean.Book">
+        <property name="name" value="西游记"/>
+    </bean>-->
+
+    <bean id="car01" class="com.learn.spring.ioc.bean.Car">
+        <property name="name" value="宝马"/>
+    </bean>
+
+    <!--SPEL spring的表达式语言 45
+     expression language-->
+    <bean id="person01" class="com.learn.spring.ioc.bean.Person">
+        <!--字面量${} #{}-->
+        <property name="salary" value="#{123456.7 * 12}"/>
+        <!--<property name="name" value="#{book01.name}"/>-->
+        <property name="car" value="#{car01}"/>
+
+        <property name="email" value="#{T(java.util.UUID).randomUUID().toString().substring(0, 5)}"/>
+
+        <!--<property name="gender" value="#{book01.getName()}"/>-->
+    </bean>
+
+<!--    <bean id="car" class="com.learn.spring.ioc.bean.Car">
+        <property name="name" value="宝马"/>
+    </bean>-->
+
+    <bean id="person02" class="com.learn.spring.ioc.bean.Person" autowire="byName">
+    </bean>
+
+
+    <bean id="person03" class="com.learn.spring.ioc.bean.Person" autowire="byName"/>
+
+<!--
+    <bean id="book02" class="com.learn.spring.ioc.bean.Book" p:name="西游记"/>
+-->
+
+    <util:list id="books">
+        <bean id="book02" class="com.learn.spring.ioc.bean.Book" p:name="西游记"/>
+        <bean id="book03" class="com.learn.spring.ioc.bean.Book" p:name="西游记"/>
+        <bean id="book04" class="com.learn.spring.ioc.bean.Book" p:name="西游记"/>
+    </util:list>
+
+    <util:map id="maps">
+        <entry key="1" value="value1"/>
+        <entry key="2" value="value2"/>
+        <entry key="3" value="value3"/>
+    </util:map>
+
+    <util:properties id="properties">
+        <prop key="hello">hello-value</prop>
+        <prop key="world">world-value</prop>
+    </util:properties>
+
+    <util:set id="set">
+        <value>hello</value>
+        <value>world</value>
+        <value>hello</value>
+    </util:set>
+
+
+    <bean id="person04" class="com.learn.spring.ioc.bean.Person" abstract="true">
+        <property name="books" ref="books"/>
+        <property name="maps" value="#{maps}"/>
+    </bean>
+
+    <bean id="person05" parent="person04">
+        <property name="gender" value="hehehe"/>
+    </bean>
+
+    <bean id="book03" class="com.learn.spring.ioc.bean.Book" init-method="myInit"
+    destroy-method="myDestory">
+        <property name="name" value="京瓶梅"/>
+    </bean>
+
+    <bean id="myFactoryBean" class="com.learn.spring.ioc.impl.MyFactoryBeanImpl"/>
+
+
+    <bean id="airPlane01" class="com.learn.spring.ioc.impl.AirPlaneStaticFactory" factory-method="getAirPlane" >
+        <constructor-arg name="jzName" value="李东方"/>
+    </bean>
+
+    <!--使用工厂方法创建的实例，不是用反射创建的-->
+    <bean id="instanceFactory" class="com.learn.spring.ioc.impl.AirPlaneInstanceFactory"/>
+
+    <bean id="airPlane02" class="com.learn.spring.ioc.bean.AirPlane" factory-bean="instanceFactory" factory-method="getAirPlane">
+        <constructor-arg name="jzName" value="李东方"/>
+    </bean>
+
+    <bean class="com.learn.spring.ioc.impl.MyPostProcessor"/>
+
+
+</beans>
