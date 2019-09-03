@@ -12,7 +12,7 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class ValidationAspect {
-    @Before("com.google.learn.spring.aop.aspect.LogAspect.declareJointPointExpression()")
+    @Before("com.learn.spring.aop.aspect.LogAspect.declareJointPointExpression()")
     public void beforeMethod(JoinPoint joinPoint) {
         System.out.println("-----> validate:  " + Arrays.asList(joinPoint.getArgs()));
 
