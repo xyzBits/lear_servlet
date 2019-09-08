@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--    int addEmployee(Employee employee);
+
+    int deleteEmployee(Integer id);
+
+    int updateEmployee(Employee employee);
+
+    Employee queryEmployee(Integer id);
+    -->
+<mapper namespace="com.learn.spring.mybatis.dao.EmployeeDao">
+
+    <!--parameterType="com.learn.spring.mybatis.bean.Employee"-->
+    <!--statementType="PREPARED" 默认-->
+    <insert id="addEmployee" useGeneratedKeys="true" keyProperty="id">
+        insert into t_employee
+        (empname, gender, email, login_account)
+        values(#{employee.empName}, #{employee.gender}, #{employee.email}, #{employee.loginAccount})
+    </insert>
+
+    <!--非自增的主键-->
+    <insert id="addEmployee1" useGeneratedKeys="true" keyProperty="employee.id">
+
+        <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="employee.id">
+            select max(id) + 1 from t_employee
+        </selectKey>
+        insert into t_employee
+        (id, empname, gender, email, login_account)
+        values(#{employee.id}, #{employee.empName}, #{employee.gender}, #{employee.email}, #{employee.loginAccount})
+    </insert>
+
+
+    <insert id="addEmployee" parameterType="com.learn.spring.mybatis.bean.Employee" databaseId="mysql"
+            useGeneratedKeys="true" keyProperty="employee.id">
+        insert into t_employee
+        (empname, gender, email, login_account)
+        values(#{employee.empName}, #{employee.gender}, #{employee.email}, #{employee.loginAccount})
+    </insert>
+
+
+    <delete id="deleteEmployee">
+        delete from t_employee
+        where id = #{id}
+    </delete>
+
+    <update id="updateEmployee" parameterType="com.learn.spring.mybatis.bean.Employee">
+        update t_employee
+        set
+        empname = #{employee.empName},
+        gender = #{employee.gender},
+        email = #{employee.email},
+        login_account = #{employee.loginAccount}
+        where
+        id = #{employee.id}
+    </update>
+
+    <select id="queryEmployee" parameterType="java.lang.Integer" resultType="com.learn.spring.mybatis.bean.Employee">
+        select * from t_employee where id = #{id}
+    </select>
+
+
+    <!--org.apache.ibatis.binding.BindingException:
+    Parameter 'id' not found. Available parameters are [arg1, arg0, param1, param2]-->
+    <select id="queryEmployeeByIdAndName" resultType="com.learn.spring.mybatis.bean.Employee">
+        select * from t_employee where id = #{id} and empname = #{name}
+    </select>
+</mapper>

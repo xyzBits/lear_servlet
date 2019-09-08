@@ -1,7 +1,7 @@
 /*
 package com.exercise.leetcode.april;
 
-import com.learn.leetcode.array.easy.Solution;
+import Solution;
 import org.junit.Assert;
 import org.junit.Test;
 
