@@ -2,6 +2,9 @@ package com.learn.thread;
 
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.ByteBuffer;
 
 /**
@@ -27,7 +30,6 @@ public class NIOTest {
         ByteBuffer buffer = ByteBuffer.allocateDirect(1024);
         System.out.println(buffer.isDirect());
     }
-
 
 
     @Test
@@ -112,5 +114,37 @@ public class NIOTest {
 
         System.out.println((char) buffer.get(1));
 
+    }
+
+    @Test
+    public void testDownloas() throws IOException {
+        URL url = new URL("www.localhost.com");
+        InputStream inputStream = url.openStream();
+        byte[] buffer = new byte[1024 * 1024];
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {
+            System.out.println(new String(buffer, 0, len));
+        }
+
+    }
+
+    public static int mySqrt(int x) {
+        double l = 0, r = x;
+
+        double mid = 0;
+        while (Math.abs(l - r) > 1e-6) {
+            mid = (l + r) / 2;
+            if (Math.pow(mid, 2) > 0) {
+                r = mid;
+            } else {
+                l = mid;
+            }
+        }
+        return (int) mid;
+    }
+
+    @Test
+    public void testSqrt() {
+        System.out.println(mySqrt(4));
     }
 }
